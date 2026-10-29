@@ -1,0 +1,12 @@
+# Optional one-click deploy on Render.com (free tier). DB is rebuilt from data/sales.csv on startup.
+services:
+  - type: web
+    name: sales-bi-assistant
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.3
+      - key: ANTHROPIC_API_KEY
+        sync: false

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mini AI Business Intelligence Assistant</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body data-currency="{{ currency }}">
+<main>
+  <header>
+    <h1>Mini AI Business Intelligence Assistant</h1>
+    <p>Ask questions about sales in plain English. The AI (or a rule-based fallback) only <em>interprets</em> your
+       question &ndash; every number comes from a SQL query on the sales database.</p>
+  </header>
+
+  <form id="ask-form" autocomplete="off">
+    <input id="question" type="text" maxlength="300" placeholder="e.g. Which product generated the highest revenue?" required>
+    <button id="ask-btn" type="submit">Ask</button>
+  </form>
+  <div class="examples" id="examples">
+    <button type="button">What is the total revenue?</button>
+    <button type="button">Which product generated the highest revenue?</button>
+    <button type="button">What is the monthly revenue trend?</button>
+    <button type="button">Which region generated the highest sales?</button>
+    <button type="button">Compare February and March 2026</button>
+  </div>
+
+  <div id="loading" class="loading" hidden>Thinking&hellip;</div>
+  <div id="error" class="notice error" hidden></div>
+
+  <section id="result" hidden>
+    <div class="answer-box">
+      <span id="method" class="badge"></span>
+      <p id="answer"></p>
+    </div>
+    <div id="cards" class="cards"></div>
+    <div class="charts" id="chart-wrap"><canvas id="chart"></canvas></div>
+    <div class="table-wrap"><table id="table"></table></div>
+    <p id="dq" class="note"></p>
+  </section>
+</main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="/static/app.js"></script>
+</body>
+</html>
